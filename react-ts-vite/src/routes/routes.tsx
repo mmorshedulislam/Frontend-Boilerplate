@@ -1,26 +1,39 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomeLayout from "../components/layouts/HomeLayout/HomeLayout";
-import Home from "../pages/Home/Home";
-import DashboardLayout from "../components/layouts/DashboardLayout/DashboardLayout";
+import HomeLayout from "../components/Layout/HomeLayout/HomeLayout";
+import AdminLayout from "../components/Layout/AdminLayout/AdminLayout";
+import HomePage from "../pages/Home/HomePage";
+import AdminHomePage from "../pages/AdminDashboard/AdminHomePage/AdminHomePage";
+import AdminCategoriesPage from "../pages/AdminDashboard/AdminCategoriesPage/AdminCategoriesPage";
 
-export const routes = createBrowserRouter([
+const routes = createBrowserRouter([
+    // Home routes
     {
-        path: "/",
+        path: '/',
         element: <HomeLayout />,
-        errorElement: <div>Error</div>,
+        errorElement: <div>Home Page Error</div>,
         children: [
             {
-                path: "/",
-                element: <Home />,
-            }],
+                path: '/',
+                element: <HomePage />
+            }
+        ]
+    },
+    // Admin routes
+    {
+        path: '/dashboard/admin',
+        element: <AdminLayout />,
+        errorElement: <div>Admin Page Error</div>,
+        children: [
+            {
+                path: '/dashboard/admin',
+                element: <AdminHomePage />,
+            },
+            {
+                path: '/dashboard/admin/categories',
+                element: <AdminCategoriesPage />,
+            }
+        ]
+    }
+])
 
-    }, {
-        path: "/dashboard",
-        element: <DashboardLayout />,
-        errorElement: <div>Error</div>,
-        children: [
-            {
-                path: "/dashboard",
-                element: <div>Dashboard Home</div>,
-            }],
-    }])
+export default routes;
