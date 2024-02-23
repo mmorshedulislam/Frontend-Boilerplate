@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../Layouts/MainLayout";
-import Home from "../Pages/Home/Home/Home";
+import DashboardLayout from "../components/layouts/DashboardLayout/DashboardLayout";
+import MainLayout from "../components/layouts/MainLayout/MainLayout";
+import HomePage from "../Pages/Home/HomePage";
+import AboutPage from "../Pages/About/AboutPage";
+import BranchesPage from "../Pages/Braches/BranchesPage";
 
 export const routes = createBrowserRouter([
   {
@@ -9,7 +12,15 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <HomePage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/branch",
+        element: <BranchesPage />,
       },
       {
         path: "/login",
@@ -23,7 +34,7 @@ export const routes = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <div>Dashboard</div>,
+    element: <DashboardLayout />,
     children: [
       {
         path: "/dashboard/admin",
